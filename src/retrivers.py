@@ -18,8 +18,8 @@ def load_pdf_vectorstore(filepath : str, save_path: str):
     documents = text_splitter.split_documents(documents)
     vectorstore = FAISS.from_documents(documents, embedding)
     vectorstore.save_local(f'vectorstores/{save_path}')
-    retriver = vectorstore.as_retriever(search_type = 'similarity', search_kwargs = {'k':7})
-    return retriver
+    retriever = vectorstore.as_retriever(search_type = 'similarity', search_kwargs = {'k':7})
+    return retriever
 
 def load_excel_vectorstore(filepath : str, save_path: str):
     df = pd.read_excel(DOCS_DIR / filepath)
@@ -30,13 +30,11 @@ def load_excel_vectorstore(filepath : str, save_path: str):
 
     vectorstore_tickers = FAISS.from_documents(documents, embedding)
     vectorstore_tickers.save_local('vectorstores/vectorstore_tickets')
-    retriver_tickets = vectorstore_tickers.as_retriever(search_type = 'similarity', search_kwargs = {'k':7})
+    retriever_tickets = vectorstore_tickers.as_retriever(search_type = 'similarity', search_kwargs = {'k':7})
 
-    return retriver_tickets
+    return retriever_tickets
 
-retriver_perguntas_frequentes = load_pdf_vectorstore("Perguntas Frequentes.pdf", "vectorstore_perguntas_frequentes")
-retriver_manual_tecnico = load_pdf_vectorstore("Manual Tecnico de Produtos.pdf", "vectorstore_manual_tecnico_produtos")
-retriver_politicas_procedimentos = load_pdf_vectorstore("Politicas e Procedimentos.pdf", "vectorstore_politicas_procedimentos")
-retriver_tickets = load_excel_vectorstore("Tickets.xlsx", "vectorstore_tickets")
-
-print(retriver_tickets.invoke('compressor'))
+retriever_perguntas_frequentes = load_pdf_vectorstore("Perguntas Frequentes.pdf", "vectorstore_perguntas_frequentes")
+retriever_manual_tecnico = load_pdf_vectorstore("Manual Tecnico de Produtos.pdf", "vectorstore_manual_tecnico_produtos")
+retriever_politicas_procedimentos = load_pdf_vectorstore("Politicas e Procedimentos.pdf", "vectorstore_politicas_procedimentos")
+retriever_tickets = load_excel_vectorstore("Tickets.xlsx", "vectorstore_tickets")
