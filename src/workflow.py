@@ -8,14 +8,16 @@ from agents import (
 )
 from supervisor import supervisor
 
+
 # Função para decidir o próximo passo
 def decide_action(state: State):
     # Se a resposta já foi gerada pelo supervisor, encerra o fluxo.
     if "answer" in state:
-        return "end_workflow" 
+        return "end_workflow"
     else:
         # Caso contrário, usa a rota para ir para o agente especialista.
         return state["route"]
+
 
 def build_workflow():
     workflow = StateGraph(State)
@@ -26,7 +28,7 @@ def build_workflow():
     workflow.add_node("perguntas_e_respostas_node", agent_perguntas_e_respostas)
     workflow.add_node("politicas_e_procedimentos_node", agent_politicas_e_procedimentos)
     workflow.add_node("tickets_node", agent_tickets)
-    
+
     # Adicione um nó de saída para a resposta direta
     workflow.add_node("end_workflow", lambda x: x)
 
@@ -42,8 +44,8 @@ def build_workflow():
             "perguntas_e_respostas": "perguntas_e_respostas_node",
             "politicas_e_procedimentos": "politicas_e_procedimentos_node",
             "tickets": "tickets_node",
-            "end_workflow": END # Termina o fluxo se a resposta já foi gerada pelo supervisor
-        }
+            "end_workflow": END,  # Termina o fluxo se a resposta já foi gerada pelo supervisor
+        },
     )
 
     # Defina as saídas dos agentes especialistas

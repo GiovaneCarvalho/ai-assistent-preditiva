@@ -4,13 +4,15 @@ from langchain_core.messages import SystemMessage, HumanMessage
 from config import llm
 from agents import State
 
+
 def supervisor(state: State):
     query = state["query"]
     chat_history = state.get("chat_history", [])
 
     mensagens = [
-        SystemMessage(content=(
-    """Você é um assistente virtual de atendimento ao cliente da **Industech**, uma empresa especializada em produtos industriais.
+        SystemMessage(
+            content=(
+                """Você é um assistente virtual de atendimento ao cliente da **Industech**, uma empresa especializada em produtos industriais.
 
     Sua principal responsabilidade é atuar como um supervisor, **roteando as perguntas dos clientes para o agente especialista mais adequado**.
 
@@ -28,18 +30,24 @@ def supervisor(state: State):
     - Responda apenas com a frase ou com a palavra-chave.
     - Não adicione explicações, comentários ou qualquer outro texto.
     - Não invente novas categorias."""
-        )),
+            )
+        ),
         *chat_history,
-        HumanMessage(content=query)
+        HumanMessage(content=query),
     ]
-    
+
     resposta = llm.invoke(mensagens)
     resposta_limpa = resposta.content.strip().lower()
 
     # Verifica se a resposta é uma das rotas ou se é uma resposta direta
-    if resposta_limpa in ["detalhe_tecnico", "perguntas_e_respostas", "politicas_e_procedimentos", "tickets"]:
+    if resposta_limpa in [
+        "detalhe_tecnico",
+        "perguntas_e_respostas",
+        "politicas_e_procedimentos",
+        "tickets",
+    ]:
         state["route"] = resposta_limpa
     else:
-        state["answer"] = resposta.content # Salva a resposta direta na chave 'answer'
+        state["answer"] = resposta.content  # Salva a resposta direta na chave 'answer'
 
     return state
