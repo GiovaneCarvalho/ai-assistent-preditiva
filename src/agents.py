@@ -4,7 +4,7 @@ from config import llm
 from retrievers import (
     retriever_manual_tecnico,
     retriever_perguntas_frequentes,
-    retriever_procedimentos,
+    retriever_politicas_procedimentos,
     retriever_tickets,
 )
 from typing import List
@@ -86,7 +86,7 @@ def agent_politicas_e_procedimentos(state: State):
         "Sua resposta deve ser formal e baseada nos documentos oficiais, garantindo que o cliente entenda as regras e os processos da empresa."
     )
     return agent_with_retriever(
-        state, "especialista em políticas e procedimentos", prompt_instrucoes, retriever_procedimentos
+        state, "especialista em políticas e procedimentos", prompt_instrucoes, retriever_politicas_procedimentos
     )
 
 
