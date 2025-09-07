@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "assistente-ai"
+version = "0.1.0"
+description = "Um assistente de ai para uma fabrica de equipamentos industriais"
+authors = ["Giovane Carvalho <degio2009@hotmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
