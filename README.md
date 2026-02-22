@@ -66,7 +66,6 @@ Para rodar o projeto localmente, siga os passos abaixo:
 4.  **Execute a aplicação Streamlit**:
 
     ```bash
-    ```bash
     streamlit run src/app.py
     ```
 

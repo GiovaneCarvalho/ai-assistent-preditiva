@@ -2,6 +2,7 @@
 .env
 vectorstores/
 ai-assistent-preditiva/
+.devcontainer/
 
 # Python cache files
 __pycache__/
