@@ -7,7 +7,7 @@ import pandas as pd
 from langchain.docstore.document import Document
 from langchain_core.vectorstores import VectorStoreRetriever
 
-BASE_DIR = Path().resolve().parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 DOCS_DIR = BASE_DIR / "docs"
 
 embedding = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
