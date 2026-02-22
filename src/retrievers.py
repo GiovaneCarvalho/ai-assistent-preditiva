@@ -5,7 +5,10 @@ from pathlib import Path
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import pandas as pd
 from langchain.docstore.document import Document
+<<<<<<< HEAD
 from langchain_core.vectorstores import VectorStoreRetriever
+=======
+>>>>>>> 280258bd50c241ec7d5c795faa7d51d3a6bc95ba
 
 BASE_DIR = Path().resolve().parent
 DOCS_DIR = BASE_DIR / "docs"
@@ -13,6 +16,7 @@ DOCS_DIR = BASE_DIR / "docs"
 embedding = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 
 
+<<<<<<< HEAD
 def load_pdf_vectorstore(filepath: str, save_path: str) -> VectorStoreRetriever:
     """
     Carrega um arquivo PDF, divide seu texto em pedaços (chunks) e cria um VectorStore
@@ -27,6 +31,9 @@ def load_pdf_vectorstore(filepath: str, save_path: str) -> VectorStoreRetriever:
         VectorStoreRetriever: Um retriever configurado para buscar os 7 documentos mais
                               relevantes usando similaridade de cosseno.
     """
+=======
+def load_pdf_vectorstore(filepath: str, save_path: str):
+>>>>>>> 280258bd50c241ec7d5c795faa7d51d3a6bc95ba
     loader = PyPDFLoader(DOCS_DIR / filepath)
     documents = loader.load()
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=500)
@@ -39,6 +46,7 @@ def load_pdf_vectorstore(filepath: str, save_path: str) -> VectorStoreRetriever:
     return retriever
 
 
+<<<<<<< HEAD
 def load_excel_vectorstore(filepath: str, save_path: str) -> VectorStoreRetriever:
     """
     Carrega um arquivo Excel, concatena o conteúdo de cada linha em um único texto
@@ -53,6 +61,9 @@ def load_excel_vectorstore(filepath: str, save_path: str) -> VectorStoreRetrieve
         VectorStoreRetriever: Um retriever configurado para buscar os 7 documentos mais
                               relevantes usando similaridade de cosseno.
     """
+=======
+def load_excel_vectorstore(filepath: str, save_path: str):
+>>>>>>> 280258bd50c241ec7d5c795faa7d51d3a6bc95ba
     df = pd.read_excel(DOCS_DIR / filepath)
     documents = []
     for idx, row in df.iterrows():

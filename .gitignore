@@ -1,4 +1,8 @@
 .venv/
 .env
 vectorstores/
+<<<<<<< HEAD
 ai-assistent-preditiva/
+=======
+
+>>>>>>> 280258bd50c241ec7d5c795faa7d51d3a6bc95ba

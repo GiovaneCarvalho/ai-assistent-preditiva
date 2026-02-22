@@ -21,6 +21,7 @@ O sistema opera com uma arquitetura de múltiplos agentes, orquestrada por um su
 
 5.  **Atualização do Histórico**: A resposta do agente é adicionada ao histórico da conversa, preparando o sistema para a próxima interação.
 
+<<<<<<< HEAD
 ## 🏗️ Decisões Arquiteturais e Técnicas
 
 Ao projetar este assistente, algumas decisões chave foram tomadas para garantir eficiência e controle:
@@ -29,6 +30,8 @@ Ao projetar este assistente, algumas decisões chave foram tomadas para garantir
 *   **FAISS Vector Store local**: Optou-se pelo FAISS (do Facebook AI) para a busca vetorial por ser leve, rodar inteiramente em memória e salvar índices no disco rígido sem a necessidade de instanciar um servidor de banco de dados (como Milvus ou ChromaDB).
 *   **Gemini Flash (LLM)**: O modelo `gemini-1.5-flash` foi escolhido por fornecer excelente performance na interpretação de intenções textuais, processamento multi-modal e raciocínio por um custo consideravelmente inferior e com menor tempo de latência em comparação aos modelos concorrentes.
 
+=======
+>>>>>>> 280258bd50c241ec7d5c795faa7d51d3a6bc95ba
 ## 📁 Estrutura do Projeto
 
   - `app.py`: O frontend da aplicação, criado com Streamlit, que gerencia a interface do chat e a interação com o workflow.
@@ -67,10 +70,16 @@ Para rodar o projeto localmente, siga os passos abaixo:
 4.  **Execute a aplicação Streamlit**:
 
     ```bash
+<<<<<<< HEAD
     streamlit run src/app.py
     ```
 
     > **⚠️ Nota sobre "Cold Start" (Primeira Execução):** 
     > Na primeira vez em que a aplicação for iniciada (ou após a atualização dos arquivos em `docs/`), ela demorará alguns instantes adicionais para processar completamente. Isso ocorre porque o sistema precisa realizar o parsing dos PDFs e Excel, fazer o download do modelo de embedding local (`all-MiniLM-L6-v2`) via HuggingFace e construir os índices vetoriais do FAISS em disco. As execuções subsequentes serão quase instantâneas.
 
+=======
+    streamlit run app.py
+    ```
+
+>>>>>>> 280258bd50c241ec7d5c795faa7d51d3a6bc95ba
 O Atendente Virtual estará disponível em seu navegador local.

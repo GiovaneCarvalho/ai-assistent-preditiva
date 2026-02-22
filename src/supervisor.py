@@ -5,6 +5,7 @@ from config import llm
 from agents import State
 
 
+<<<<<<< HEAD
 def supervisor(state: State) -> State:
     """
     Atua como um roteador para a conversa, decidindo qual agente especialista deve
@@ -23,6 +24,9 @@ def supervisor(state: State) -> State:
                'route' é preenchido com o nome da rota. Caso contrário, 
                'answer' é preenchido com a resposta direta.
     """
+=======
+def supervisor(state: State):
+>>>>>>> 280258bd50c241ec7d5c795faa7d51d3a6bc95ba
     query = state["query"]
     chat_history = state.get("chat_history", [])
 
