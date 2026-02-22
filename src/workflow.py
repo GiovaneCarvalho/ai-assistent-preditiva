@@ -1,8 +1,5 @@
 from langgraph.graph import StateGraph, START, END
-<<<<<<< HEAD
 from langgraph.graph.state import CompiledStateGraph
-=======
->>>>>>> 280258bd50c241ec7d5c795faa7d51d3a6bc95ba
 from agents import (
     State,
     agent_detalhe_tecnico,
@@ -14,7 +11,6 @@ from supervisor import supervisor
 
 
 # Função para decidir o próximo passo
-<<<<<<< HEAD
 def decide_action(state: State) -> str:
     """
     Função de roteamento condicional (conditional edge) do LangGraph.
@@ -31,9 +27,6 @@ def decide_action(state: State) -> str:
         str: O nome do próximo nó a ser executado, ou "end_workflow"
              para finalizar a execução.
     """
-=======
-def decide_action(state: State):
->>>>>>> 280258bd50c241ec7d5c795faa7d51d3a6bc95ba
     # Se a resposta já foi gerada pelo supervisor, encerra o fluxo.
     if "answer" in state:
         return "end_workflow"
@@ -42,7 +35,6 @@ def decide_action(state: State):
         return state["route"]
 
 
-<<<<<<< HEAD
 def build_workflow() -> CompiledStateGraph:
     """
     Constrói e compila o grafo de estados (workflow) usando LangGraph.
@@ -54,9 +46,6 @@ def build_workflow() -> CompiledStateGraph:
     Returns:
         CompiledStateGraph: O aplicativo executável representando o pipeline.
     """
-=======
-def build_workflow():
->>>>>>> 280258bd50c241ec7d5c795faa7d51d3a6bc95ba
     workflow = StateGraph(State)
 
     # Adicione os nós (nodes)
